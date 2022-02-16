@@ -11,8 +11,11 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var entity = new Entity(new EntityStateA);
         while (!stoppingToken.IsCancellationRequested)
         {
+            entity.DoSomething1();
+            entity.DoSomething2();
             _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
             await Task.Delay(1000, stoppingToken);
         }
