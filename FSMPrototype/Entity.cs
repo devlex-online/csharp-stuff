@@ -10,7 +10,7 @@ class Entity{
     }
 
     public void TransitionTo(EntityState entityState){
-        Console.WriteLine($"{EntityId}: TRansition from {_entityState?.GetType().Name} to {entityState.GetType().Name}");
+        Console.WriteLine($"{Thread.CurrentThread.ManagedThreadId} - {EntityId}: TRansition from {_entityState?.GetType().Name} to {entityState.GetType().Name}");
         _entityState = entityState;
         _entityState.SetEntity(this);
     }
